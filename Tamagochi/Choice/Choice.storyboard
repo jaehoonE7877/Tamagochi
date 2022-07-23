@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Efe-0o-2tr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Choice Collection View Controller-->
+        <scene sceneID="9A8-Vs-8Wa">
+            <objects>
+                <collectionViewController id="Efe-0o-2tr" customClass="ChoiceCollectionViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="peV-ho-wlA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ye3-Qg-Q0w">
+                            <size key="itemSize" width="158" height="174"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ChoiceCollectionViewCell" id="cFs-kM-LeH" customClass="ChoiceCollectionViewCell" customModule="Tamagochi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="158" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uhb-I5-nch">
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="174"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-Om-AVO">
+                                            <rect key="frame" x="20" y="150.5" width="118" height="23.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Oo-gS-zxw">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="142.5"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6Oo-gS-zxw" firstAttribute="leading" secondItem="uhb-I5-nch" secondAttribute="leading" id="A4b-sh-1sU"/>
+                                        <constraint firstItem="6Oo-gS-zxw" firstAttribute="top" secondItem="uhb-I5-nch" secondAttribute="top" id="UAT-vy-glG"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Oo-gS-zxw" secondAttribute="trailing" id="XFA-yU-0NE"/>
+                                        <constraint firstAttribute="bottom" secondItem="Rw2-Om-AVO" secondAttribute="bottom" id="b78-hn-7dE"/>
+                                        <constraint firstItem="6Oo-gS-zxw" firstAttribute="height" secondItem="Rw2-Om-AVO" secondAttribute="height" multiplier="6" id="cAe-9w-2VS"/>
+                                        <constraint firstItem="Rw2-Om-AVO" firstAttribute="top" secondItem="6Oo-gS-zxw" secondAttribute="bottom" constant="8" id="cZC-Bs-NLW"/>
+                                        <constraint firstAttribute="trailing" secondItem="Rw2-Om-AVO" secondAttribute="trailing" constant="20" id="f1l-cm-I8S"/>
+                                        <constraint firstItem="Rw2-Om-AVO" firstAttribute="centerX" secondItem="uhb-I5-nch" secondAttribute="centerX" id="hC3-F5-FOk"/>
+                                        <constraint firstItem="Rw2-Om-AVO" firstAttribute="leading" secondItem="uhb-I5-nch" secondAttribute="leading" constant="20" id="swu-Pp-3D2"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="158" height="174"/>
+                                <connections>
+                                    <outlet property="tamaImageView" destination="6Oo-gS-zxw" id="1Ax-Q6-KJu"/>
+                                    <outlet property="tamaNameLabel" destination="Rw2-Om-AVO" id="7Gb-hj-3Lw"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Efe-0o-2tr" id="W6b-n2-32W"/>
+                            <outlet property="delegate" destination="Efe-0o-2tr" id="9Af-Aw-Fk7"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3Q-Iv-lSF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="786.95652173913049" y="28.794642857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

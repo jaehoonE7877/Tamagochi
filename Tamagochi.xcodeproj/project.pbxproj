@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25891223288C07E8007E7054 /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25891222288C07E8007E7054 /* Choice.storyboard */; };
+		25891226288C0815007E7054 /* TamaDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25891225288C0815007E7054 /* TamaDetail.storyboard */; };
+		2589122E288C08D5007E7054 /* NameSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2589122D288C08D5007E7054 /* NameSetting.storyboard */; };
+		25891233288C0B34007E7054 /* ChoiceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25891232288C0B34007E7054 /* ChoiceCollectionViewController.swift */; };
+		25891235288C0B77007E7054 /* ChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25891234288C0B77007E7054 /* ChoiceCollectionViewCell.swift */; };
+		25891237288C0BC0007E7054 /* TamaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25891236288C0BC0007E7054 /* TamaDetailViewController.swift */; };
+		25891239288C0C11007E7054 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25891238288C0C11007E7054 /* SettingTableViewController.swift */; };
+		2589123B288C0C52007E7054 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2589123A288C0C52007E7054 /* Setting.storyboard */; };
+		2589123D288C0CD4007E7054 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589123C288C0CD4007E7054 /* NameSettingViewController.swift */; };
 		25E7F7B2288A7AF7008A96CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7F7B1288A7AF7008A96CF /* AppDelegate.swift */; };
 		25E7F7B4288A7AF7008A96CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7F7B3288A7AF7008A96CF /* SceneDelegate.swift */; };
 		25E7F7B6288A7AF7008A96CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7F7B5288A7AF7008A96CF /* ViewController.swift */; };
@@ -16,6 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25891222288C07E8007E7054 /* Choice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
+		25891225288C0815007E7054 /* TamaDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TamaDetail.storyboard; sourceTree = "<group>"; };
+		2589122D288C08D5007E7054 /* NameSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NameSetting.storyboard; sourceTree = "<group>"; };
+		25891232288C0B34007E7054 /* ChoiceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCollectionViewController.swift; sourceTree = "<group>"; };
+		25891234288C0B77007E7054 /* ChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
+		25891236288C0BC0007E7054 /* TamaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaDetailViewController.swift; sourceTree = "<group>"; };
+		25891238288C0C11007E7054 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingTableViewController.swift; path = Tamagochi/TamaDetail/SettingTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		2589123A288C0C52007E7054 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		2589123C288C0CD4007E7054 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
 		25E7F7AE288A7AF7008A96CF /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E7F7B1288A7AF7008A96CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E7F7B3288A7AF7008A96CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +55,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25891224288C07FA007E7054 /* Choice */ = {
+			isa = PBXGroup;
+			children = (
+				25891222288C07E8007E7054 /* Choice.storyboard */,
+				25891234288C0B77007E7054 /* ChoiceCollectionViewCell.swift */,
+				25891232288C0B34007E7054 /* ChoiceCollectionViewController.swift */,
+			);
+			path = Choice;
+			sourceTree = "<group>";
+		};
+		25891227288C0830007E7054 /* TamaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				25891225288C0815007E7054 /* TamaDetail.storyboard */,
+				25891236288C0BC0007E7054 /* TamaDetailViewController.swift */,
+			);
+			path = TamaDetail;
+			sourceTree = "<group>";
+		};
+		2589122C288C089F007E7054 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2589123A288C0C52007E7054 /* Setting.storyboard */,
+				25891238288C0C11007E7054 /* SettingTableViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		2589122F288C08D8007E7054 /* NameSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2589122D288C08D5007E7054 /* NameSetting.storyboard */,
+				2589123C288C0CD4007E7054 /* NameSettingViewController.swift */,
+			);
+			path = NameSetting;
+			sourceTree = "<group>";
+		};
 		25E7F7A5288A7AF7008A96CF = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +115,10 @@
 				25E7F7B3288A7AF7008A96CF /* SceneDelegate.swift */,
 				25E7F7B5288A7AF7008A96CF /* ViewController.swift */,
 				25E7F7B7288A7AF7008A96CF /* Main.storyboard */,
+				2589122F288C08D8007E7054 /* NameSetting */,
+				2589122C288C089F007E7054 /* Setting */,
+				25891227288C0830007E7054 /* TamaDetail */,
+				25891224288C07FA007E7054 /* Choice */,
 				25E7F7BA288A7AF9008A96CF /* Assets.xcassets */,
 				25E7F7BC288A7AF9008A96CF /* LaunchScreen.storyboard */,
 				25E7F7BF288A7AF9008A96CF /* Info.plist */,
@@ -126,8 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E7F7BE288A7AF9008A96CF /* LaunchScreen.storyboard in Resources */,
+				25891226288C0815007E7054 /* TamaDetail.storyboard in Resources */,
+				2589123B288C0C52007E7054 /* Setting.storyboard in Resources */,
 				25E7F7BB288A7AF9008A96CF /* Assets.xcassets in Resources */,
 				25E7F7B9288A7AF7008A96CF /* Main.storyboard in Resources */,
+				2589122E288C08D5007E7054 /* NameSetting.storyboard in Resources */,
+				25891223288C07E8007E7054 /* Choice.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2589123D288C0CD4007E7054 /* NameSettingViewController.swift in Sources */,
+				25891239288C0C11007E7054 /* SettingTableViewController.swift in Sources */,
 				25E7F7B6288A7AF7008A96CF /* ViewController.swift in Sources */,
+				25891233288C0B34007E7054 /* ChoiceCollectionViewController.swift in Sources */,
 				25E7F7B2288A7AF7008A96CF /* AppDelegate.swift in Sources */,
+				25891235288C0B77007E7054 /* ChoiceCollectionViewCell.swift in Sources */,
+				25891237288C0BC0007E7054 /* TamaDetailViewController.swift in Sources */,
 				25E7F7B4288A7AF7008A96CF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +361,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -322,6 +391,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
