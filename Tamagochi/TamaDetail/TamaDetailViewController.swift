@@ -8,7 +8,7 @@
 import UIKit
 
 class TamaDetailViewController: UIViewController {
-    
+        
     var tamaName: String?
     var tamaImage: String?
     var tamaDetail: String?
@@ -44,6 +44,8 @@ class TamaDetailViewController: UIViewController {
         designLabel(labelName: detailMainLabel)
         detailTamaLabel.font = .boldSystemFont(ofSize: 14)
         detailMainLabel.font = .systemFont(ofSize: 13)
+        
+        
     }
     
 
@@ -72,7 +74,9 @@ class TamaDetailViewController: UIViewController {
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier)
+        let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as! ViewController
+        
+        vc.tamaMainName = tamaName
         
         let nav = UINavigationController(rootViewController: vc)
         

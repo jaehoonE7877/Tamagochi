@@ -9,7 +9,10 @@ import Foundation
 
 struct Tama {
     var name: String
-    var level: Int
     var water: Int
     var rice: Int
+    
+    enum Level : Int{
+        case one = 1, two, three, four, five, six, seven, eight, nine, ten
+    }
 }
