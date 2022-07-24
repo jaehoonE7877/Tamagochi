@@ -18,7 +18,8 @@ class ChoiceCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "다마고치 선택하기"
+        self.title = "다마고치 선택하기"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
         
         let layout = UICollectionViewFlowLayout()
         

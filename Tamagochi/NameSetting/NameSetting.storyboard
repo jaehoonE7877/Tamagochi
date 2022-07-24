@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -11,17 +11,46 @@
         <!--Name Setting View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="NameSettingViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NameSettingViewController" id="Y6W-OH-hqX" customClass="NameSettingViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtt-ak-doc">
+                                <rect key="frame" x="40" y="84" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameSettingTextFieldRetrun:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="aAd-zN-MJR"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9i-At-2Ly">
+                                <rect key="frame" x="40" y="122" width="334" height="1"/>
+                                <color key="backgroundColor" red="0.30196078431372547" green="0.41568627450980389" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="TLh-Zp-VT1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f9i-At-2Ly" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="DJr-aR-Pdd"/>
+                            <constraint firstItem="dtt-ak-doc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Gb1-FZ-wJt"/>
+                            <constraint firstItem="f9i-At-2Ly" firstAttribute="top" secondItem="dtt-ak-doc" secondAttribute="bottom" constant="4" id="HQI-9M-8Pv"/>
+                            <constraint firstItem="dtt-ak-doc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="YMI-EY-K4h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dtt-ak-doc" secondAttribute="trailing" constant="40" id="rxe-wr-ydL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f9i-At-2Ly" secondAttribute="trailing" constant="40" id="ux7-EZ-kdQ"/>
+                            <constraint firstItem="dtt-ak-doc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="zMG-G5-N7X"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameSettingTextField" destination="dtt-ak-doc" id="kI1-yD-leV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="72"/>
+            <point key="canvasLocation" x="28.985507246376812" y="71.651785714285708"/>
         </scene>
     </scenes>
     <resources>

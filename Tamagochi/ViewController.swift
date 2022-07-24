@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // 인스턴스 생성
     var tamaMainInfo = TamaInfo()
     
-    let nickname = "대장"
+    var nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
     var tamaRice = UserDefaults.standard.integer(forKey: "rice")
     var tamaWater = UserDefaults.standard.integer(forKey: "water")
     
@@ -35,8 +35,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // 상단 네비바
-        title = "\(nickname)님의 다마고치"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: nil)
+        navigationItem.title = "\(nickname)님의 다마고치"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(settingButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         // Main view 색상, 말풍선
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
@@ -71,11 +72,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //텍스트 필드 디자인
         designTextField(textFieldName: tamaRiceTextField)
         designTextField(textFieldName: tamaWaterTextField)
-        tamaRiceTextField.attributedPlaceholder = NSAttributedString(string: "밥주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)])
-        tamaWaterTextField.attributedPlaceholder = NSAttributedString(string: "물주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)])
+        tamaRiceTextField.attributedPlaceholder = NSAttributedString(string: "밥주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
+        tamaWaterTextField.attributedPlaceholder = NSAttributedString(string: "물주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
         
-        UserDefaults.standard.removeObject(forKey: "rice")
-        UserDefaults.standard.removeObject(forKey: "water")
+        navigationItem.backButtonTitle = ""
     }
     
     // 다시짜기
@@ -210,6 +210,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         tamaRiceTextField.resignFirstResponder()
         return true
     }
+    
+    //setting 화면으로 이동
+    @objc
+    func settingButtonTapped() {
+        
+        let sb = UIStoryboard(name: "Setting", bundle: nil)
+        
+        let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identifier) as! SettingTableViewController
+        
+        vc.ownerNickname = nickname
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
 // 추가 및 수정사항
