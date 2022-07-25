@@ -20,9 +20,6 @@
                                 <rect key="frame" x="40" y="84" width="334" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="nameSettingTextFieldRetrun:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="aAd-zN-MJR"/>
-                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9i-At-2Ly">
                                 <rect key="frame" x="40" y="122" width="334" height="1"/>

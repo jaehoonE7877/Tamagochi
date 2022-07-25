@@ -7,25 +7,29 @@
 
 import UIKit
 
-class NameSettingViewController: UIViewController {
+class NameSettingViewController: UIViewController, UITextFieldDelegate {
     
     static let identifier = "NameSettingViewController"
     var nickName: String?
     
-    @IBOutlet weak var nameSettingTextField: UITextField!
+    @IBOutlet weak var nameSettingTextField: UITextField! { didSet { nameSettingTextField.delegate = self }}
     
+    var completionHandler: ((String) -> (String))?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "대장님 이름 정하기"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: nil, action: #selector(saveButtonTapped))
+        
         
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         
+        
         nameSettingTextField.text = nickName
         designTextField(textFieldName: nameSettingTextField)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
         
         
    }
@@ -41,22 +45,18 @@ class NameSettingViewController: UIViewController {
     @objc
     func saveButtonTapped(){
         
-        guard let textFieldInput = nameSettingTextField.text, textFieldInput.count >= 2 && textFieldInput.count <= 6 else { return }
+        guard let textFieldInput = nameSettingTextField.text else { return }
         
         UserDefaults.standard.set(textFieldInput, forKey: "nickname")
         
+        _ = completionHandler?(self.nameSettingTextField.text ?? "")
         self.navigationController?.popViewController(animated: true)
+        
     }
     
-    @IBAction func nameSettingTextFieldRetrun(_ sender: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameSettingTextField.resignFirstResponder()
+        return true
     }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        nameSettingTextField.resignFirstResponder()
-//        return true
-//    }
     
 }
-// 다시 화면 돌아갔을 때 데이터 전달
-// 왜 키보드가 올라가있는 상황에서만 뒤로 팝 할까?
-

@@ -11,6 +11,7 @@ class SettingTableViewController: UITableViewController {
     
     static let identifier = "SettingTableViewController"
     var ownerNickname: String?
+    var completionHandler: ((String) -> (String))?
     
     @IBOutlet weak var nickNameLabel: UILabel! 
     
@@ -19,17 +20,18 @@ class SettingTableViewController: UITableViewController {
         
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        
         self.title = "설정"
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonTapped))
         
         nickNameLabel.text = ownerNickname
         nickNameLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         nickNameLabel.font = .systemFont(ofSize: 13)
         
+        
     }
-    
+    //cell button action
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
@@ -39,7 +41,12 @@ class SettingTableViewController: UITableViewController {
             
             let vc = sb.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as! NameSettingViewController
             
-            vc.nickName = ownerNickname
+            vc.nickName = UserDefaults.standard.string(forKey: "nickname")
+            vc.completionHandler = { text in
+                self.nickNameLabel.text = text
+                UserDefaults.standard.set(text, forKey: "nickname")
+                return text
+            }
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -48,22 +55,49 @@ class SettingTableViewController: UITableViewController {
             let sb = UIStoryboard(name: "Choice", bundle: nil)
             
             let vc = sb.instantiateViewController(withIdentifier: ChoiceCollectionViewController.identifier) as! ChoiceCollectionViewController
-            
-            //let nav = UINavigationController(rootViewController: vc)
-            
+                        
             self.navigationController?.pushViewController(vc, animated: true)
 
         case 2:
+            showAlertController()
+            
+        default:
+            return
+        }
+    }
+    // 데이터 초기화 Alert
+    func showAlertController() {
+        
+        let alert = UIAlertController(title: "데이터 초기화", message: "정말 다시 처음부터 시작하실 건가융?", preferredStyle: .alert)
+        
+        let no = UIAlertAction(title: "아냐!", style: .default, handler: nil)
+        let yes = UIAlertAction(title: "웅", style: .destructive){ _ in
+            
+            let sb = UIStoryboard(name: "Choice", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: ChoiceCollectionViewController.identifier) as! ChoiceCollectionViewController
+            
+            let nav = UINavigationController(rootViewController: vc)
+            
+            nav.modalPresentationStyle = .fullScreen
+            
             UserDefaults.standard.removeObject(forKey: "rice")
             UserDefaults.standard.removeObject(forKey: "water")
             
-        default:
-            print("오류입니다.")
+            self.present(nav, animated: false)
+            
         }
         
+        alert.addAction(no)
+        alert.addAction(yes)
+        
+        present(alert, animated: true)
+    }
     
+    @objc
+    func backButtonTapped(){
+        _ = completionHandler?(self.nickNameLabel.text ?? "")
+        self.navigationController?.popViewController(animated: true)
     }
 }
-//추가 및 수정사항
-// Alert만들어서 case 2번에 넣기
-// case 0 은 닉네임 데이터 들고가서 변경시켜주기.
+

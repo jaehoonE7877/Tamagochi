@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
-
+class ViewController: UIViewController {
+    
     static let identifier = "ViewController"
     var tamaMainName: String?
     // 인스턴스 생성
     var tamaMainInfo = TamaInfo()
     
-    var nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
+    let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
     var tamaRice = UserDefaults.standard.integer(forKey: "rice")
     var tamaWater = UserDefaults.standard.integer(forKey: "water")
     
@@ -31,14 +31,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tamaWaterTextField: UITextField! { didSet { tamaWaterTextField.delegate = self }}
     @IBOutlet weak var tamaWaterButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // 상단 네비바
         navigationItem.title = "\(nickname)님의 다마고치"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(settingButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        
         // Main view 색상, 말풍선
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         bubbleImageView.image = UIImage(named: "bubble.png")
@@ -56,44 +59,44 @@ class ViewController: UIViewController, UITextFieldDelegate {
         tamaNameLabel.layer.cornerRadius = 4
         tamaNameLabel.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
         
-        designLabel(labelName: tamaLevelLabel)
-        // 이미지 & 레벨
+        // 이미지 & 레벨(viewDidLoad)
         showLevel()
-        
+        designLabel(labelName: tamaLevelLabel)
+        tamaLevelLabel.font = .boldSystemFont(ofSize: 14)
         
         // 버튼 디자인
-        tamaRiceButton.setImage(UIImage(systemName: "drop.circle"), for: .normal)
-        tamaWaterButton.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
-        tamaRiceButton.setTitle(" 밥먹기", for: .normal)
-        tamaWaterButton.setTitle(" 물먹기", for: .normal)
-        designButton(buttonName: tamaRiceButton)
-        designButton(buttonName: tamaWaterButton)
+        designButton(buttonName: tamaRiceButton, imageName: "drop.circle", text: " 밥먹기")
+        designButton(buttonName: tamaWaterButton, imageName: "leaf.circle", text: " 물먹기")
         
         //텍스트 필드 디자인
-        designTextField(textFieldName: tamaRiceTextField)
-        designTextField(textFieldName: tamaWaterTextField)
-        tamaRiceTextField.attributedPlaceholder = NSAttributedString(string: "밥주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
-        tamaWaterTextField.attributedPlaceholder = NSAttributedString(string: "물주세용", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
+        designTextField(textFieldName: tamaRiceTextField, text: "밥주세용")
+        designTextField(textFieldName: tamaWaterTextField, text: "물주세용")
         
+        
+        //다음 화면 backbutton 이름 지우기
         navigationItem.backButtonTitle = ""
     }
     
-    // 다시짜기
+    // 밥주세요 버튼 액션
     @IBAction func tamaRiceButtonTapped(_ sender: UIButton) {
         
-        if tamaRiceTextField.text != nil {
-            
-            let riceValue = UserDefaults.standard.integer(forKey: "rice")
-            
-            let updateRiceValue = riceValue + Int(tamaRiceTextField.text!)!
-            
-            UserDefaults.standard.set(updateRiceValue, forKey: "rice")
-            
-        } else if tamaRiceTextField.text == ""{
+        guard let tamaRice = tamaRiceTextField.text else { return }
+        // 1. 텍스트 필드안에 아무것도 없을 때 버튼 누르면 1씩 증가
+        if tamaRice == "" {
             
             let riceValue = UserDefaults.standard.integer(forKey: "rice")
             
             let updateRiceValue = riceValue + 1
+            
+            UserDefaults.standard.set(updateRiceValue, forKey: "rice")
+            // 2. 텍스트 필드안에 숫자가 있을 때 숫자만큼 증가
+        } else {
+            
+            let riceValue = UserDefaults.standard.integer(forKey: "rice")
+            
+            guard let tamaRiceCnt = Int(tamaRice) else { return }
+            
+            let updateRiceValue = riceValue + tamaRiceCnt
             
             UserDefaults.standard.set(updateRiceValue, forKey: "rice")
         }
@@ -102,17 +105,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         tamaRiceTextField.text = ""
         
-        bubbleLabel.text = "\(nickname)님 \(tamaMainInfo.tamaStatus[Int.random(in: 1...10)])"
-        
+        bubbleLabelReset(name: nickname)
     }
-    
+    // 물주세요 버튼 액션
     @IBAction func tamaWaterButtonTapped(_ sender: UIButton) {
         
-        if tamaWaterTextField.text != nil {
+        guard let tamaWater = tamaWaterTextField.text else { return }
+        
+        if tamaWater == "" {
             
             let waterValue = UserDefaults.standard.integer(forKey: "water")
             
-            let updateWaterValue = waterValue + Int(tamaWaterTextField.text!)!
+            let updateWaterValue = waterValue + 1
             
             UserDefaults.standard.set(updateWaterValue, forKey: "water")
             
@@ -120,8 +124,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             let waterValue = UserDefaults.standard.integer(forKey: "water")
             
-            let updateWaterValue = waterValue + 1
-           
+            guard let tamaWaterCnt = Int(tamaWater) else { return }
+            
+            let updateWaterValue = waterValue + tamaWaterCnt
+            
             UserDefaults.standard.set(updateWaterValue, forKey: "water")
         }
         
@@ -129,9 +135,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         tamaWaterTextField.text = ""
         
-        bubbleLabel.text = "\(nickname)님 \(tamaMainInfo.tamaStatus[Int.random(in: 1...10)])"
+        bubbleLabelReset(name: nickname)
     }
     
+    // 레벨 계산 및 레벨 당 이미지 변환
     func showLevel() {
         
         let tamaTotalLevel = tamaLevel(rice: UserDefaults.standard.integer(forKey: "rice"), water: UserDefaults.standard.integer(forKey: "water"))
@@ -161,7 +168,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             designMainImage(level: 9)
         }
         
-        tamaLevelLabel.text = #"LV\#(tamaLevel(rice: UserDefaults.standard.integer(forKey: "rice"), water: UserDefaults.standard.integer(forKey: "water")))∙\#(UserDefaults.standard.integer(forKey: "rice"))개∙\#(UserDefaults.standard.integer(forKey: "water"))개"#
+        tamaLevelLabel.text = #"LV\#(tamaTotalLevel) ∙ 밥알\#(UserDefaults.standard.integer(forKey: "rice"))개 ∙ 물방울\#(UserDefaults.standard.integer(forKey: "water"))개"#
         
     }
     
@@ -172,20 +179,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelName.textAlignment = .center
     }
     
-    func designButton(buttonName: UIButton){
+    func designButton(buttonName: UIButton, imageName: String, text: String){
         buttonName.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         buttonName.layer.borderWidth = 1
         buttonName.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
         buttonName.layer.cornerRadius = 4
         buttonName.layer.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1).cgColor
         buttonName.titleLabel?.font = .boldSystemFont(ofSize: 13)
+        buttonName.setImage(UIImage(systemName: imageName), for: .normal)
+        buttonName.setTitle(text, for: .normal)
+        
     }
     
-    func designTextField(textFieldName: UITextField){
+    func designTextField(textFieldName: UITextField, text: String){
         textFieldName.textAlignment = .center
         textFieldName.borderStyle = .none
         textFieldName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         textFieldName.keyboardType = .default
+        textFieldName.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
+    }
+    
+    func bubbleLabelReset(name: String){
+        bubbleLabel.text = "\(name)님 \(tamaMainInfo.tamaStatus[Int.random(in: 1...10)])"
     }
     
     // 레벨 값 저장해서 아규먼트로
@@ -201,10 +216,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // 레벨 계산
     func tamaLevel(rice: Int, water: Int) -> Int {
         
-        return ((rice / 5) + (water / 2)) / 10
+        let level = ((rice / 5) + (water / 2)) / 10
+        
+        // 초기 레벨 = 1, 만렙 == 10
+        if level <= 1{
+            return 1
+        } else if level >= 10 {
+            return 10
+        } else {
+            return level
+        }
     }
     
-    //키보드 return
+    //키보드 return(한 자리수 일 때)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         tamaWaterTextField.resignFirstResponder()
         tamaRiceTextField.resignFirstResponder()
@@ -218,16 +242,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let sb = UIStoryboard(name: "Setting", bundle: nil)
         
         let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identifier) as! SettingTableViewController
+        // 닉네임 전달
+        vc.ownerNickname = UserDefaults.standard.string(forKey: "nickname")
         
-        vc.ownerNickname = nickname
+        vc.completionHandler = { text in
+            self.navigationItem.title = "\(text)님의 다마고치"
+            self.bubbleLabelReset(name: text)
+            return text
+        }
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
-
-// 추가 및 수정사항
-// 1. 숫자만 입력 가능 + 99개 넘기면 toast
-// 2. 버튼 클릭시 옵셔널 처리 다시하기
-

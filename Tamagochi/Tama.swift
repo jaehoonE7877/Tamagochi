@@ -12,7 +12,4 @@ struct Tama {
     var water: Int
     var rice: Int
     
-    enum Level : Int{
-        case one = 1, two, three, four, five, six, seven, eight, nine, ten
-    }
 }
