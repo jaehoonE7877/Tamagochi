@@ -18,15 +18,15 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        view.backgroundColor = UIColor.bgColor
         
         self.title = "설정"
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationController?.navigationBar.tintColor = UIColor.letterColor
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.letterColor ]
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonTapped))
         
         nickNameLabel.text = ownerNickname
-        nickNameLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        nickNameLabel.textColor = UIColor.letterColor
         nickNameLabel.font = .systemFont(ofSize: 13)
         
         

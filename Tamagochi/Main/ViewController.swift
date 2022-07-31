@@ -48,10 +48,10 @@ class ViewController: UIViewController {
         navigationItem.title = "\(nickname)님의 다마고치"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(settingButtonTapped))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.letterColor
         
         // Main view 색상, 말풍선
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        view.backgroundColor = UIColor.bgColor
         bubbleImageView.image = UIImage(named: "bubble.png")
         designLabel(labelName: bubbleLabel)
         bubbleLabel.text = "\(nickname)님 \(tamaInfo.tamaStatus[0])"
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         tamaNameLabel.font = .boldSystemFont(ofSize: 14)
         tamaNameLabel.layer.borderWidth = 1
         tamaNameLabel.layer.cornerRadius = 4
-        tamaNameLabel.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
+        tamaNameLabel.layer.borderColor = UIColor.letterColor.cgColor
         
         // 이미지 & 레벨(viewDidLoad)
         showLevel()
@@ -194,17 +194,17 @@ class ViewController: UIViewController {
     
     
     func designLabel(labelName: UILabel){
-        labelName.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        labelName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        labelName.textColor = UIColor.letterColor
+        labelName.backgroundColor = UIColor.bgColor
         labelName.textAlignment = .center
     }
     
     func designButton(buttonName: UIButton, imageName: String, text: String){
-        buttonName.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        buttonName.tintColor = UIColor.letterColor
         buttonName.layer.borderWidth = 1
-        buttonName.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
+        buttonName.layer.borderColor = UIColor.letterColor.cgColor
         buttonName.layer.cornerRadius = 4
-        buttonName.layer.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1).cgColor
+        buttonName.layer.backgroundColor = UIColor.bgColor.cgColor
         buttonName.titleLabel?.font = .boldSystemFont(ofSize: 13)
         buttonName.setImage(UIImage(systemName: imageName), for: .normal)
         buttonName.setTitle(text, for: .normal)
@@ -214,9 +214,9 @@ class ViewController: UIViewController {
     func designTextField(textFieldName: UITextField, text: String){
         textFieldName.textAlignment = .center
         textFieldName.borderStyle = .none
-        textFieldName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        textFieldName.backgroundColor = UIColor.bgColor
         textFieldName.keyboardType = .default
-        textFieldName.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
+        textFieldName.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightLetterColor])
     }
     
     func bubbleLabelReset(name: String){

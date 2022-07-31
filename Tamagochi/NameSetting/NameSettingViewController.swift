@@ -22,10 +22,10 @@ class NameSettingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.title = "대장님 이름 정하기"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.letterColor]
         
         
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        view.backgroundColor = UIColor.bgColor
         
         
         nameSettingTextField.text = nickName
@@ -38,10 +38,10 @@ class NameSettingViewController: UIViewController, UITextFieldDelegate {
     
     func designTextField(textFieldName: UITextField){
         textFieldName.borderStyle = .none
-        textFieldName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        textFieldName.backgroundColor = UIColor.bgColor
         textFieldName.keyboardType = .default
-        textFieldName.attributedPlaceholder = NSAttributedString(string: "대장님 이름을 알려주세요!", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 0.5)])
-        textFieldName.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        textFieldName.attributedPlaceholder = NSAttributedString(string: "대장님 이름을 알려주세요!", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightLetterColor])
+        textFieldName.textColor = UIColor.letterColor
     }
     
     @objc

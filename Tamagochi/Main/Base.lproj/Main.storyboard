@@ -84,7 +84,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5K7-qZ-bDC">
-                                <rect key="frame" x="107.5" y="153.5" width="199" height="44"/>
+                                <rect key="frame" x="120" y="153.5" width="174" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2S4-KF-Pd5"/>
                                 </constraints>
@@ -115,7 +115,7 @@
                             <constraint firstItem="0uR-aZ-ejd" firstAttribute="centerX" secondItem="bhA-ED-jLf" secondAttribute="centerX" id="1G6-Un-9LE"/>
                             <constraint firstItem="Bku-Oc-Awt" firstAttribute="height" secondItem="2N1-fQ-fr0" secondAttribute="height" id="4zj-uP-G34"/>
                             <constraint firstItem="Byc-fJ-C4i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="67Z-m9-JfN"/>
-                            <constraint firstItem="5K7-qZ-bDC" firstAttribute="width" secondItem="uGH-l7-3f4" secondAttribute="width" multiplier="0.8" id="6ZX-cC-lbX"/>
+                            <constraint firstItem="5K7-qZ-bDC" firstAttribute="width" secondItem="uGH-l7-3f4" secondAttribute="width" multiplier="0.7" id="6ZX-cC-lbX"/>
                             <constraint firstItem="Bku-Oc-Awt" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="6pv-t4-VEd"/>
                             <constraint firstItem="uGH-l7-3f4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="60" id="Bg9-fA-KkJ"/>
                             <constraint firstItem="Byc-fJ-C4i" firstAttribute="top" secondItem="a3M-xu-aR7" secondAttribute="bottom" constant="20" id="JP1-Ay-pvC"/>

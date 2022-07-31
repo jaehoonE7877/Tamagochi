@@ -30,9 +30,9 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
         
         tamaNameLabel.font = .boldSystemFont(ofSize: 12)
         tamaNameLabel.textAlignment = .center
-        tamaNameLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        tamaNameLabel.layer.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1).cgColor
-        tamaNameLabel.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
+        tamaNameLabel.textColor = UIColor.letterColor
+        tamaNameLabel.layer.backgroundColor = UIColor.bgColor.cgColor
+        tamaNameLabel.layer.borderColor = UIColor.letterColor.cgColor
         tamaNameLabel.layer.cornerRadius = 4
         tamaNameLabel.layer.borderWidth = 1
         

@@ -29,7 +29,7 @@ class TamaDetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
-        detailMainView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        detailMainView.backgroundColor = UIColor.bgColor
         
         designButton(buttonName: cancelButton, text: "취소")
         designButton(buttonName: okButton, text: "변경하기")
@@ -55,19 +55,19 @@ class TamaDetailViewController: UIViewController {
     
 
     func designLabel(labelName: UILabel){
-        labelName.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        labelName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        labelName.textColor = UIColor.letterColor
+        labelName.backgroundColor = UIColor.bgColor
         labelName.textAlignment = .center
         labelName.layer.borderWidth = 1
         labelName.layer.cornerRadius = 4
-        labelName.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
+        labelName.layer.borderColor = UIColor.letterColor.cgColor
         labelName.numberOfLines = 0
     }
     
     func designButton(buttonName: UIButton, text: String){
         buttonName.setTitle(text, for: .normal)
-        buttonName.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        buttonName.setTitleColor(UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1), for: .normal)
+        buttonName.backgroundColor = UIColor.bgColor
+        buttonName.setTitleColor(UIColor.letterColor, for: .normal)
         
     }
     

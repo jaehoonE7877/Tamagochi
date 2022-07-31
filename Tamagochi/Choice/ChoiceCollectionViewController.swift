@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Toast
 
 class ChoiceCollectionViewController: UICollectionViewController {
     
@@ -19,7 +19,7 @@ class ChoiceCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.title = "다마고치 선택하기"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.letterColor]
         
         let layout = UICollectionViewFlowLayout()
         
@@ -38,7 +38,7 @@ class ChoiceCollectionViewController: UICollectionViewController {
         
         collectionView.collectionViewLayout = layout
         
-        collectionView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        collectionView.backgroundColor = UIColor.bgColor
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,7 +50,7 @@ class ChoiceCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoiceCollectionViewCell", for: indexPath) as? ChoiceCollectionViewCell else { return UICollectionViewCell() }
         
         
-        cell.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        cell.backgroundColor = UIColor.bgColor
         
         cell.configureCell(index: indexPath.row, data: tamaList)
         
@@ -77,6 +77,8 @@ class ChoiceCollectionViewController: UICollectionViewController {
         
         if indexPath.row <= 2 {
             self.present(vc, animated: true)
+        } else {
+            view.makeToast("준비중입니다!", duration: 1, position: .center)
         }
     }
     
