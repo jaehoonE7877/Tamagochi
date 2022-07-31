@@ -14,25 +14,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        //Usdefaults 값을 같이 전달해줘야 함 1.nickname, water, rice, 몇번째 다마고치인지
+        
+        
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
         // 값이 있을 때
-//        if UserDefaults.standard.bool(forKey: "rice") && UserDefaults.standard.bool(forKey: "water") {
-//
-//            let sb = UIStoryboard(name: "Choice", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: ChoiceCollectionViewController.identifier) as! ChoiceCollectionViewController
-//
-//            window?.rootViewController = vc
-//
-//        } else {
-//            let sb = UIStoryboard(name: "Choice", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: ChoiceCollectionViewController.identifier) as! ChoiceCollectionViewController
-//
-//            window?.rootViewController = vc
-//        }
-//        
-//        window?.makeKeyAndVisible()
+        if UserDefaults.standard.bool(forKey: "first") {
+
+            let sb = UIStoryboard(name: "Choice", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: ChoiceCollectionViewController.identifier) as! ChoiceCollectionViewController
+
+            window?.rootViewController = vc
+
+        } else {
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as! ViewController
+            vc.tamaNum = UserDefaults.standard.integer(forKey: "choice")
+            vc.tamaRice = UserDefaults.standard.integer(forKey: "rice")
+            vc.tamaWater = UserDefaults.standard.integer(forKey: "water")
+            //vc.nickname = UserDefaults.standard.string(forKey: "nickname")
+            
+            let nav = UINavigationController(rootViewController: vc)
+            
+            
+            window?.rootViewController = nav
+        }
+        
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

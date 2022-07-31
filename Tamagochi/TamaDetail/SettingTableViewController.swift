@@ -41,7 +41,8 @@ class SettingTableViewController: UITableViewController {
             
             let vc = sb.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as! NameSettingViewController
             
-            vc.nickName = UserDefaults.standard.string(forKey: "nickname")
+            vc.nickName = ownerNickname
+            
             vc.completionHandler = { text in
                 self.nickNameLabel.text = text
                 UserDefaults.standard.set(text, forKey: "nickname")
@@ -81,8 +82,10 @@ class SettingTableViewController: UITableViewController {
             
             nav.modalPresentationStyle = .fullScreen
             
+            UserDefaults.standard.set(true, forKey: "first")
             UserDefaults.standard.removeObject(forKey: "rice")
             UserDefaults.standard.removeObject(forKey: "water")
+            UserDefaults.standard.removeObject(forKey: "nickname")
             
             self.present(nav, animated: false)
             

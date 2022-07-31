@@ -64,17 +64,19 @@ class ChoiceCollectionViewController: UICollectionViewController {
         let vc = sb.instantiateViewController(withIdentifier: TamaDetailViewController.identifier) as! TamaDetailViewController
         
         if indexPath.row <= 2 {
-            vc.tamaName = tamaList.tamaName[indexPath.row]
-            vc.tamaImage = tamaList.tamaBaseImage[indexPath.row]
-            vc.tamaDetail = tamaList.tamaInformation[indexPath.row]
+            vc.tamaNum = indexPath.row
+            
+//            vc.tamaName = tamaList.tamaName[indexPath.row]
+//            vc.tamaImage = tamaList.tamaBaseImage[indexPath.row]
+//            vc.tamaDetail = tamaList.tamaInformation[indexPath.row]
         }
         
-        let nav = UINavigationController(rootViewController: vc)
+        //let nav = UINavigationController(rootViewController: vc)
         
-        nav.modalPresentationStyle = .overCurrentContext
+        vc.modalPresentationStyle = .overCurrentContext
         
         if indexPath.row <= 2 {
-            self.present(nav, animated: true)
+            self.present(vc, animated: true)
         }
     }
     

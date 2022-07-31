@@ -10,13 +10,19 @@ import UIKit
 class ViewController: UIViewController {
     
     static let identifier = "ViewController"
-    var tamaMainName: String?
     // 인스턴스 생성
-    var tamaMainInfo = TamaInfo()
+    var tamaNum: Int?
+    var tamaRice: Int?
+    var tamaWater: Int?
+    //var nickname: String?
     
-    let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
-    var tamaRice = UserDefaults.standard.integer(forKey: "rice")
-    var tamaWater = UserDefaults.standard.integer(forKey: "water")
+    // 처음 사용했으면 true
+    var tamaInfo = TamaInfo()
+
+    
+    //var isFirst = UserDefaults.standard.bool(forKey: "first")
+    var nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
+    //var choiceNum = UserDefaults.standard.integer(forKey: "choice")
     
     @IBOutlet weak var bubbleImageView: UIImageView!
     @IBOutlet weak var bubbleLabel: UILabel!
@@ -35,6 +41,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let tamaNum = tamaNum else { return }
+        UserDefaults.standard.set(tamaNum, forKey: "choice")
         
         // 상단 네비바
         navigationItem.title = "\(nickname)님의 다마고치"
@@ -46,14 +54,13 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         bubbleImageView.image = UIImage(named: "bubble.png")
         designLabel(labelName: bubbleLabel)
-        bubbleLabel.text = "\(nickname)님 \(tamaMainInfo.tamaStatus[0])"
+        bubbleLabel.text = "\(nickname)님 \(tamaInfo.tamaStatus[0])"
         bubbleLabel.font = .boldSystemFont(ofSize: 13)
         bubbleLabel.numberOfLines = 0
         
         // 이름 레이블 디자인
         designLabel(labelName: tamaNameLabel)
-        guard let tamaMainName = tamaMainName else { return }
-        tamaNameLabel.text = tamaMainName + " 다마고치"
+        tamaNameLabel.text = tamaInfo.tamaName[tamaNum] + " 다마고치"
         tamaNameLabel.font = .boldSystemFont(ofSize: 14)
         tamaNameLabel.layer.borderWidth = 1
         tamaNameLabel.layer.cornerRadius = 4
@@ -77,10 +84,21 @@ class ViewController: UIViewController {
         navigationItem.backButtonTitle = ""
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let changedName = UserDefaults.standard.string(forKey: "nickname") else { return }
+        self.navigationItem.title = "\(changedName)님의 다마고치"
+        bubbleLabel.text = "\(changedName)님 \(tamaInfo.tamaStatus[0])"
+        nickname = changedName
+
+    }
+    
     // 밥주세요 버튼 액션
     @IBAction func tamaRiceButtonTapped(_ sender: UIButton) {
         
+        
         guard let tamaRice = tamaRiceTextField.text else { return }
+
         // 1. 텍스트 필드안에 아무것도 없을 때 버튼 누르면 1씩 증가
         if tamaRice == "" {
             
@@ -106,6 +124,7 @@ class ViewController: UIViewController {
         tamaRiceTextField.text = ""
         
         bubbleLabelReset(name: nickname)
+        
     }
     // 물주세요 버튼 액션
     @IBAction func tamaWaterButtonTapped(_ sender: UIButton) {
@@ -136,6 +155,7 @@ class ViewController: UIViewController {
         tamaWaterTextField.text = ""
         
         bubbleLabelReset(name: nickname)
+        
     }
     
     // 레벨 계산 및 레벨 당 이미지 변환
@@ -200,17 +220,16 @@ class ViewController: UIViewController {
     }
     
     func bubbleLabelReset(name: String){
-        bubbleLabel.text = "\(name)님 \(tamaMainInfo.tamaStatus[Int.random(in: 1...10)])"
+        //버튼 누른 순간 false
+        UserDefaults.standard.set(false, forKey: "first")
+        
+        bubbleLabel.text = "\(name)님 \(tamaInfo.tamaStatus[Int.random(in: 1...10)])"
     }
     
     // 레벨 값 저장해서 아규먼트로
     func designMainImage(level: Int){
-        
-        for i in 0...2 {
-            if tamaMainInfo.tamaName[i] == tamaMainName {
-                tamaImageView.image = UIImage(named: "\(i+1)-\(level).png")
-            }
-        }
+        guard let tamaNum = tamaNum else { return }
+        tamaImageView.image = UIImage(named: "\(tamaNum + 1)-\(level).png")
     }
     
     // 레벨 계산
@@ -243,7 +262,7 @@ class ViewController: UIViewController {
         
         let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identifier) as! SettingTableViewController
         // 닉네임 전달
-        vc.ownerNickname = UserDefaults.standard.string(forKey: "nickname")
+        vc.ownerNickname = nickname
         
         vc.completionHandler = { text in
             self.navigationItem.title = "\(text)님의 다마고치"

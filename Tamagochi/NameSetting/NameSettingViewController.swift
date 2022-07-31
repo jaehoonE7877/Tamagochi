@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toast
+import IQKeyboardManagerSwift
 
 class NameSettingViewController: UIViewController, UITextFieldDelegate {
     
@@ -47,10 +49,17 @@ class NameSettingViewController: UIViewController, UITextFieldDelegate {
         
         guard let textFieldInput = nameSettingTextField.text else { return }
         
-        UserDefaults.standard.set(textFieldInput, forKey: "nickname")
+        if textFieldInput.count >= 2 && textFieldInput.count <= 6 {
+            UserDefaults.standard.set(textFieldInput, forKey: "nickname")
+            
+            _ = completionHandler?(self.nameSettingTextField.text ?? "")
+            self.navigationController?.popViewController(animated: true)
+            
+        } else {
+            view.makeToast("대장 이름은 2글자에서 6글자 사이여야합니다.", duration: 3, position: .center)
+        }
         
-        _ = completionHandler?(self.nameSettingTextField.text ?? "")
-        self.navigationController?.popViewController(animated: true)
+        
         
     }
     

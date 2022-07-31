@@ -9,9 +9,11 @@ import UIKit
 
 class TamaDetailViewController: UIViewController {
         
-    var tamaName: String?
-    var tamaImage: String?
-    var tamaDetail: String?
+//    var tamaName: String?
+//    var tamaImage: String?
+//    var tamaDetail: String?
+    var tamaNum: Int?
+    var tamaInfo = TamaInfo()
     
     static let identifier = "TamaDetailViewController"
     
@@ -32,9 +34,12 @@ class TamaDetailViewController: UIViewController {
         designButton(buttonName: cancelButton, text: "취소")
         designButton(buttonName: okButton, text: "변경하기")
         
-        guard let tamaName = tamaName else { return }
-        guard let tamaImage = tamaImage else { return }
-        guard let tamaDetail = tamaDetail else { return }
+        guard let tamaNum = tamaNum else { return }
+
+        
+        let tamaName = tamaInfo.tamaName[tamaNum]
+        let tamaImage = tamaInfo.tamaBaseImage[tamaNum]
+        let tamaDetail = tamaInfo.tamaInformation[tamaNum]
         detailTamaLabel.text = "\(tamaName)" + " 다마고치"
         detailTamaImageView.image = UIImage(named: tamaImage)
         detailMainLabel.text = tamaDetail
@@ -76,7 +81,7 @@ class TamaDetailViewController: UIViewController {
         
         let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as! ViewController
         
-        vc.tamaMainName = tamaName
+        vc.tamaNum = tamaNum
         
         let nav = UINavigationController(rootViewController: vc)
         

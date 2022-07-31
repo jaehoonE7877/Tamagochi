@@ -24,6 +24,9 @@
 		25E7F7B9288A7AF7008A96CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E7F7B7288A7AF7008A96CF /* Main.storyboard */; };
 		25E7F7BB288A7AF9008A96CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E7F7BA288A7AF9008A96CF /* Assets.xcassets */; };
 		25E7F7BE288A7AF9008A96CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E7F7BC288A7AF9008A96CF /* LaunchScreen.storyboard */; };
+		25F3F7232893B6D8003D9EEA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F3F7222893B6D8003D9EEA /* UIColor+Extension.swift */; };
+		25F3F7262893C64A003D9EEA /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 25F3F7252893C64A003D9EEA /* Toast */; };
+		25F3F7292893C7E7003D9EEA /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25F3F7282893C7E7003D9EEA /* IQKeyboardManagerSwift */; };
 		25F51E6C288E4D2B005E0ABA /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F51E6B288E4D2B005E0ABA /* UITextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,7 @@
 		25E7F7BA288A7AF9008A96CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E7F7BD288A7AF9008A96CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25E7F7BF288A7AF9008A96CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25F3F7222893B6D8003D9EEA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		25F51E6B288E4D2B005E0ABA /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F3F7262893C64A003D9EEA /* Toast in Frameworks */,
+				25F3F7292893C7E7003D9EEA /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +128,7 @@
 				25E7F7B1288A7AF7008A96CF /* AppDelegate.swift */,
 				25E7F7B3288A7AF7008A96CF /* SceneDelegate.swift */,
 				25F51E6B288E4D2B005E0ABA /* UITextField+Extension.swift */,
+				25F3F7222893B6D8003D9EEA /* UIColor+Extension.swift */,
 				25F51E6A288E4427005E0ABA /* Main */,
 				2589122F288C08D8007E7054 /* NameSetting */,
 				2589122C288C089F007E7054 /* Setting */,
@@ -160,6 +167,8 @@
 			);
 			name = Tamagochi;
 			packageProductDependencies = (
+				25F3F7252893C64A003D9EEA /* Toast */,
+				25F3F7282893C7E7003D9EEA /* IQKeyboardManagerSwift */,
 			);
 			productName = Tamagochi;
 			productReference = 25E7F7AE288A7AF7008A96CF /* Tamagochi.app */;
@@ -190,6 +199,8 @@
 			);
 			mainGroup = 25E7F7A5288A7AF7008A96CF;
 			packageReferences = (
+				25F3F7242893C64A003D9EEA /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				25F3F7272893C7E7003D9EEA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 25E7F7AF288A7AF7008A96CF /* Products */;
 			projectDirPath = "";
@@ -225,6 +236,7 @@
 				2589123D288C0CD4007E7054 /* NameSettingViewController.swift in Sources */,
 				25891239288C0C11007E7054 /* SettingTableViewController.swift in Sources */,
 				25E7F7B6288A7AF7008A96CF /* ViewController.swift in Sources */,
+				25F3F7232893B6D8003D9EEA /* UIColor+Extension.swift in Sources */,
 				25891233288C0B34007E7054 /* ChoiceCollectionViewController.swift in Sources */,
 				25E7F7B2288A7AF7008A96CF /* AppDelegate.swift in Sources */,
 				25891235288C0B77007E7054 /* ChoiceCollectionViewCell.swift in Sources */,
@@ -456,6 +468,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25F3F7242893C64A003D9EEA /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		25F3F7272893C7E7003D9EEA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25F3F7252893C64A003D9EEA /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25F3F7242893C64A003D9EEA /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		25F3F7282893C7E7003D9EEA /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25F3F7272893C7E7003D9EEA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25E7F7A6288A7AF7008A96CF /* Project object */;
 }
