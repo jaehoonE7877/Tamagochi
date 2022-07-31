@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     //var isFirst = UserDefaults.standard.bool(forKey: "first")
     var nickname = UserDefaults.standard.string(forKey: "nickname") ?? "대장"
+    var riceCnt = UserDefaults.standard.integer(forKey: "rice")
+    var waterCnt = UserDefaults.standard.integer(forKey: "water")
     //var choiceNum = UserDefaults.standard.integer(forKey: "choice")
     
     @IBOutlet weak var bubbleImageView: UIImageView!
@@ -46,7 +48,7 @@ class ViewController: UIViewController {
         
         // 상단 네비바
         navigationItem.title = "\(nickname)님의 다마고치"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.letterColor]
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(settingButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.letterColor
         
@@ -143,7 +145,10 @@ class ViewController: UIViewController {
             
             let waterValue = UserDefaults.standard.integer(forKey: "water")
             
-            guard let tamaWaterCnt = Int(tamaWater) else { return }
+            guard let tamaWaterCnt = Int(tamaWater), tamaWaterCnt < 50 else { view.makeToast("물은 50개 이상 못먹어요!", duration: 3, position: .center)
+                tamaWaterTextField.text?.removeAll()
+                return
+            }
             
             let updateWaterValue = waterValue + tamaWaterCnt
             
@@ -163,32 +168,15 @@ class ViewController: UIViewController {
         
         let tamaTotalLevel = tamaLevel(rice: UserDefaults.standard.integer(forKey: "rice"), water: UserDefaults.standard.integer(forKey: "water"))
         
-        switch tamaTotalLevel {
-        case 0:
+        if tamaTotalLevel == 0 {
             designMainImage(level: 1)
-        case 1:
-            designMainImage(level: 1)
-        case 2:
-            designMainImage(level: 2)
-        case 3:
-            designMainImage(level: 3)
-        case 4:
-            designMainImage(level: 4)
-        case 5:
-            designMainImage(level: 5)
-        case 6:
-            designMainImage(level: 6)
-        case 7:
-            designMainImage(level: 7)
-        case 8:
-            designMainImage(level: 8)
-        case 9:
+        } else if tamaTotalLevel >= 9 {
             designMainImage(level: 9)
-        default:
-            designMainImage(level: 9)
+        } else {
+            designMainImage(level: tamaTotalLevel)
         }
         
-        tamaLevelLabel.text = #"LV\#(tamaTotalLevel) ∙ 밥알\#(UserDefaults.standard.integer(forKey: "rice"))개 ∙ 물방울\#(UserDefaults.standard.integer(forKey: "water"))개"#
+        tamaLevelLabel.text = #"LV\#(tamaTotalLevel)∙밥알\#(UserDefaults.standard.integer(forKey: "rice"))개∙물방울\#(UserDefaults.standard.integer(forKey: "water"))개"#
         
     }
     
@@ -217,6 +205,7 @@ class ViewController: UIViewController {
         textFieldName.backgroundColor = UIColor.bgColor
         textFieldName.keyboardType = .default
         textFieldName.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightLetterColor])
+        textFieldName.textColor = UIColor.letterColor
     }
     
     func bubbleLabelReset(name: String){
