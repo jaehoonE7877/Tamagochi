@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		25051DC5288CF7920004DED8 /* Tama.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25051DC4288CF7920004DED8 /* Tama.swift */; };
+		2559F8C32897E407004990D6 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559F8C22897E407004990D6 /* UserDefaultsHelper.swift */; };
+		2559F8C52897E665004990D6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559F8C42897E665004990D6 /* Constant.swift */; };
 		25891223288C07E8007E7054 /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25891222288C07E8007E7054 /* Choice.storyboard */; };
 		25891226288C0815007E7054 /* TamaDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25891225288C0815007E7054 /* TamaDetail.storyboard */; };
 		2589122E288C08D5007E7054 /* NameSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2589122D288C08D5007E7054 /* NameSetting.storyboard */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		25051DC4288CF7920004DED8 /* Tama.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tama.swift; sourceTree = "<group>"; };
+		2559F8C22897E407004990D6 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		2559F8C42897E665004990D6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		25891222288C07E8007E7054 /* Choice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
 		25891225288C0815007E7054 /* TamaDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TamaDetail.storyboard; sourceTree = "<group>"; };
 		2589122D288C08D5007E7054 /* NameSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NameSetting.storyboard; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		250E2ABF2897E3300051351B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				2559F8C22897E407004990D6 /* UserDefaultsHelper.swift */,
+				2559F8C42897E665004990D6 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		25891224288C07FA007E7054 /* Choice */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +120,7 @@
 		25E7F7A5288A7AF7008A96CF = {
 			isa = PBXGroup;
 			children = (
+				250E2ABF2897E3300051351B /* Constant */,
 				25E7F7B0288A7AF7008A96CF /* Tamagochi */,
 				25E7F7AF288A7AF7008A96CF /* Products */,
 			);
@@ -234,11 +248,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2589123D288C0CD4007E7054 /* NameSettingViewController.swift in Sources */,
+				2559F8C32897E407004990D6 /* UserDefaultsHelper.swift in Sources */,
 				25891239288C0C11007E7054 /* SettingTableViewController.swift in Sources */,
 				25E7F7B6288A7AF7008A96CF /* ViewController.swift in Sources */,
 				25F3F7232893B6D8003D9EEA /* UIColor+Extension.swift in Sources */,
 				25891233288C0B34007E7054 /* ChoiceCollectionViewController.swift in Sources */,
 				25E7F7B2288A7AF7008A96CF /* AppDelegate.swift in Sources */,
+				2559F8C52897E665004990D6 /* Constant.swift in Sources */,
 				25891235288C0B77007E7054 /* ChoiceCollectionViewCell.swift in Sources */,
 				25891237288C0BC0007E7054 /* TamaDetailViewController.swift in Sources */,
 				2589123F288CB426007E7054 /* TamaInfo.swift in Sources */,
